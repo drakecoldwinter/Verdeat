@@ -28,6 +28,40 @@ wifi:
 
 captive_portal:
 
+light:
+  - platform: monochromatic
+    name: "LED Lights 1"
+    output: output_component1
+
+  - platform: monochromatic
+    name: "LED Lights 2"
+    output: output_component2
+
+  - platform: monochromatic
+    name: "LED Lights 3"
+    output: output_component3
+
+  - platform: monochromatic
+    name: "LED Lights 4"
+    output: output_component4
+  
+output:
+  - platform: ledc
+    id: output_component1
+    pin: GPIO14
+
+  - platform: ledc
+    id: output_component2
+    pin: GPIO27
+
+  - platform: ledc
+    id: output_component3
+    pin: GPIO26
+
+  - platform: ledc
+    id: output_component4
+    pin: GPIO25
+
 switch:
   - platform: gpio
     name: $deviceString PUMP OUT 1
@@ -35,35 +69,13 @@ switch:
     pin: GPIO13
     id: pump_out_01
 
-  - platform: gpio
-    name: $deviceString LED OUT 1
-    icon: "mdi:lightbulb_outline"
-    pin: GPIO14
-    id: led_out_01
-
-  - platform: gpio
-    name: $deviceString LED OUT 2
-    icon: "mdi:lightbulb_outline"
-    pin: GPIO27
-    id: led_out_02
-
-  - platform: gpio
-    name: $deviceString LED OUT 3
-    icon: "mdi:lightbulb_outline"
-    pin: GPIO26
-    id: led_out_03
-
-  - platform: gpio
-    name: $deviceString LED OUT 4
-    icon: "mdi:lightbulb_outline"
-    pin: GPIO25
-    id: led_out_04
-
-
 binary_sensor:
   - platform: status
     name: $deviceString Status
 
-# Below the GPIO for the sensors, still haven't make them work
+# Flood sensor still haven't configured, lost it.
 # GPIO33 #Flood sensor
+
+# The water sensor is an ultrasonic one, but it uses single pin for trigger and echo
+#This is not supported on EspHome
 # GPIO32 #Water level sensor
